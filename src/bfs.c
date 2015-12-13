@@ -1,3 +1,5 @@
+#include "headers.h"
+
 void initialize_vertices(int* vertices, int size, int start_vertex){
 
 	for (int i = 0; i < size; ++i)
@@ -11,31 +13,40 @@ void initialize_vertices(int* vertices, int size, int start_vertex){
 	}
 
 }
-void bfs(int* vertices, Edge** edges, int num_vertices, int num_edges){
+void bfs(int* vertices, Edge* edges, int num_vertices, int num_edges){
 
 	int level = 0;
-	int count = 1;
+	int modified;
 
-	while(count < num_vertices){
-		for (int i = 0; i < num_vertices; ++i)
+	//continue looping till all vertices have not been updated
+	do{
+		modified = 0;
+		for (int i = 0; i < num_edges; ++i)
 		{
+			
 			int first = edges[i].first;
 			int second = edges[i].second;
+			
 
-			if ((vertices[first] == 0) &&(vertices[second] == -1))
+			if ((vertices[first] == level) && (vertices[second] == -1))
 			{
 				vertices[second] = level + 1;
-				count++;
+				modified = 1;
 				
-			}else if (vertices[first]!= 0 && (vertices[second] == -1))
+			}else if (vertices[second]== level && (vertices[first] == -1))
 			{
-				vertices[second] = level + 1;
-				count++;
+				vertices[first] = level + 1;
+				modified = 1;
 				
 			}
 			
-		}
-	}
+		}//end of for
+		level++;
+	}while(modified != 0);
 	
 
 }
+
+// void bfs(int* vertices, Edge** edges, int num_vertices, int num_edges, int starting_vertex){
+
+// }
