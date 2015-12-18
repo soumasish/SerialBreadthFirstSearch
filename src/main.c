@@ -2,9 +2,9 @@
 
 int main(int argc, char** argv){
 
-	const int NUM_VERTICES = 2048000;
-	const int NUM_EDGES = 8192000;
-	const int START_VERTEX = 196729;
+	const int NUM_VERTICES = 1024;
+	const int NUM_EDGES = 2048;
+	const int START_VERTEX = 147;
 
 
 	clock_t begin, end;
@@ -15,7 +15,7 @@ int main(int argc, char** argv){
 	int first, second;
 
 	FILE *infile;
-    char *path = "DataSet/2048000.txt";
+    char *path = "DataSet/1024-2048.txt";
     char line[100];
 
     infile = fopen(path, "r");
@@ -55,7 +55,7 @@ int main(int argc, char** argv){
 	// }
 
 	begin = clock();
-	bfs(vertices, edges, NUM_VERTICES, NUM_EDGES);
+	int final_level = bfs(vertices, edges, NUM_VERTICES, NUM_EDGES);
 	end = clock();
 	time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
 
@@ -64,7 +64,7 @@ int main(int argc, char** argv){
 		printf("%d : %d", i, vertices[i]);
 		printf(((i % 4) != 3) ? "\t":"\n");
 	}
-
+	printf("BFS completed over %d levels\n", final_level);
 	printf("Time taken: %f\n", time_spent);
 
 	

@@ -7,5 +7,5 @@ typedef struct Edge{
 	int second;
 }Edge;
 
-void bfs(int* vertices, Edge* edges, int num_vertices, int num_edges);
+int bfs(int* vertices, Edge* edges, int num_vertices, int num_edges);
 void initialize_vertices(int* vertices, int size, int start_vertex);

@@ -13,7 +13,7 @@ void initialize_vertices(int* vertices, int size, int start_vertex){
 	}
 
 }
-void bfs(int* vertices, Edge* edges, int num_vertices, int num_edges){
+int bfs(int* vertices, Edge* edges, int num_vertices, int num_edges){
 
 	int level = 0;
 	int modified;
@@ -44,7 +44,7 @@ void bfs(int* vertices, Edge* edges, int num_vertices, int num_edges){
 		level++;
 	}while(modified != 0);
 	
-
+	return level;
 }
 
 // void bfs(int* vertices, Edge** edges, int num_vertices, int num_edges, int starting_vertex){
